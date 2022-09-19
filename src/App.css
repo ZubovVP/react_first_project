@@ -31,3 +31,8 @@
     grid-area: content;
     background-color: wheat;
 }
+
+.content img {
+    width: 800px;
+    height: 350px;
+}
