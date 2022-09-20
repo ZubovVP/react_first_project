@@ -13,26 +13,13 @@
     /*grid-gap: 10px;*/
 }
 
-.nav {
-    grid-area: nav;
-    background-color: cadetblue;
-}
 
-.header {
-    grid-area: header;
-    background-color: green;
-}
 
-.header img {
-    width: 20px;
-}
 
-.content {
-    grid-area: content;
-    background-color: wheat;
-}
 
-.content img {
-    width: 800px;
-    height: 350px;
-}
+
+
+/*.content img {*/
+/*    width: 800px;*/
+/*    height: 350px;*/
+/*}*/
