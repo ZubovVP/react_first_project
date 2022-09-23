@@ -13,13 +13,18 @@
     /*grid-gap: 10px;*/
 }
 
+.app-wrapper-content {
+    grid-area: content;
+    background-color: wheat;
+}
+
+.app-wrapper-content img {
+    width: 400px;
+}
 
 
 
 
 
 
-/*.content img {*/
-/*    width: 800px;*/
-/*    height: 350px;*/
-/*}*/
+
