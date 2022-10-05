@@ -11,6 +11,9 @@ let state = {
             {id: 1, text: 'Hi'},
             {id: 2, text: 'How are you?'},
             {id: 3, text: 'Yo'},
+            {id: 4, text: 'Hi'},
+            {id: 5, text: 'How are you?'},
+            {id: 6, text: 'Yo'},
         ],
         dialogs: [
             {id: 1, name: 'Duke'},
