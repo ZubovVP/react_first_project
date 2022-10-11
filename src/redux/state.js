@@ -1,4 +1,4 @@
-import post from "../components/Profile/MyPosts/Post/Post";
+import {rerenderEntireTree} from "../render";
 
 let state = {
     profilePage: {
@@ -45,6 +45,7 @@ export let addPost = (message) => {
     };
 
     state.profilePage.posts.push(newPost);
+    rerenderEntireTree(state);
 };
 
 export default state;
