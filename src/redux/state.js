@@ -125,4 +125,5 @@ export const subscribe = (observer) => {
     rerenderEntireTree = observer;  //паттерн наблюдатель (observer)
 };
 
-export default state;
+export default store;
+// export default state;
