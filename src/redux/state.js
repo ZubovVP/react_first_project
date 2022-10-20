@@ -65,7 +65,7 @@ let store = {
         return store._state.profilePage.posts;
     },
     getNewPostsInfo() {
-        return store._state.newPostText;
+        return store._state.profilePage.newPostText;
     },
     setNewPostsInfo(text) {
         this.store._state.newPostText = text;
