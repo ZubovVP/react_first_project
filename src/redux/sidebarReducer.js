@@ -1,7 +1,15 @@
 const ADD_NEW_FRIEND = 'ADD-FRIEND';
 const UPDATE_FRIEND = 'UPDATE-FRIEND';
 
-const sidebarReducer = (state, action) => {
+const initionalState = {
+    friends: [
+        {id: 1, name: 'Duke'},
+        {id: 2, name: 'Alex'},
+        {id: 3, name: 'Kate'}
+    ]
+};
+
+const sidebarReducer = (state = initionalState, action) => {
     switch (action.type) {
         case ADD_NEW_FRIEND:
             let name = state.name;
