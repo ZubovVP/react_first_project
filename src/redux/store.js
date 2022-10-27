@@ -12,7 +12,7 @@ let store = {
             newPostText: 'Hello'
         },
 
-        messagesPage: {
+        dialogsPage: {
             messages: [
                 {id: 1, text: 'Hi'},
                 {id: 2, text: 'How are you?'},
@@ -21,7 +21,6 @@ let store = {
                 {id: 5, text: 'How are you?'},
                 {id: 6, text: 'Yo'},
             ],
-            newMessageBody: "",
             dialogs: [
                 {id: 1, name: 'Duke'},
                 {id: 2, name: 'Alex'},
@@ -29,8 +28,8 @@ let store = {
                 {id: 4, name: 'River'},
                 {id: 5, name: 'Vitaly'},
                 {id: 6, name: 'Valera'}
-            ]
-
+            ],
+            newMessageBody: ""
         },
 
         sidebar: {
@@ -43,7 +42,7 @@ let store = {
     },
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
-        this._state.messagesPage = dialogsReducer(this._state.messagesPage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
         this._state._callSubscriber(this._state);
@@ -57,29 +56,15 @@ let store = {
         console.log('state changed');
     },
 
-    getPosts() {
-        return store._state.profilePage.posts;
-    },
-    getNewPostsInfo() {
-        return store._state.profilePage.newPostText;
-    },
-    setNewPostsInfo(text) {
-        this.store._state.newPostText = text;
-    },
-
     subscribe(observer) {
         this._state._callSubscriber = observer;  //паттерн наблюдатель (observer)
     },
 
-    getMessages() {
-        return this._state.messagesPage.messages;
-    },
-
     getDialogs() {
-        return this._state.messagesPage._dialogs;
+        return this._state.dialogsPage._dialogs;
     },
     addDialogs(text) {
-        this._state.messagesPage.messages.push(9, text);
+        this._state.dialogsPage.messages.push(9, text);
     },
 
     getSidebar() {
