@@ -8,12 +8,11 @@ import StoreContext from "./StoreContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-let rerenderEntireTree = (state) => {
+let rerenderEntireTree = () => {
     root.render(
         <React.StrictMode>
             <StoreContext.Provider value={store}>
                 <App/>
-                {/*<App dispatch={store.dispatch.bind(store)} store={store} state={state}/>*/}
             </StoreContext.Provider>
         </React.StrictMode>
     );

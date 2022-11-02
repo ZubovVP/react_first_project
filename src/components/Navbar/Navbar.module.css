@@ -22,12 +22,6 @@
     bottom: 0;
 }
 
-.friendsLogo {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-
 .active {
     color: gold;
 }

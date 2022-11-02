@@ -1,10 +1,8 @@
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import DialogItem from "../Dialogs/DialogItem/DialogItem";
+import FriendsContainer from "../Friends/FriendsContainter";
 
 const Navbar = (props) => {
-    let dialogsElements = props.state.friends.map(friend => <DialogItem name={friend.name} id={friend.id}/>);
-
     return (
         <nav className={s.nav}>
             <div className={s.item}>
@@ -28,9 +26,7 @@ const Navbar = (props) => {
                         <NavLink to="/friends"
                                  className={navData => navData.isActive ? s.active : s.friends}>Friends</NavLink>
                     </div>
-                    <div className={s.friendsLogo}>
-                        {dialogsElements}
-                    </div>
+                    <FriendsContainer/>
                 </div>
             </div>
         </nav>
