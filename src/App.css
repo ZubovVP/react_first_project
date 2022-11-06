@@ -15,7 +15,7 @@
 
 .app-wrapper-content {
     grid-area: content;
-    background-color: wheat;
+    background-color: lightcoral;
 }
 
 .app-wrapper-content img {
