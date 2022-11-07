@@ -11,22 +11,25 @@ const initialState = {
 
 const sidebarReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_NEW_FRIEND:
+        case ADD_NEW_FRIEND: {
             let name = state.name;
-            state.friends.push({id: 9, name: name});
-            return state;
+            let newState = {...state}
+            newState.friends.push({id: 9, name: name});
+            return newState;
+        }
 
-        case UPDATE_FRIEND:
+        case UPDATE_FRIEND: {
             let username = state.name;
             let id = state.id;
-            for (let i = 0; i < state.length; i++) {
-                if (state.friends[i].id === id) {
-                    state.friends[i].name = username;
+            let newState = {...state}
+            for (let i = 0; i < newState.length; i++) {
+                if (newState.friends[i].id === id) {
+                    newState.friends[i].name = username;
                     return state;
                 }
             }
-            return state;
-
+            return newState;
+        }
         default:
             return state;
     }
