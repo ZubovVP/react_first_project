@@ -13,9 +13,9 @@ const sidebarReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_FRIEND: {
             let name = state.name;
-            let newState = {...state}
-            newState.friends.push({id: 9, name: name});
-            return newState;
+           return  {...state,
+                friends : [...state, {id: 9, name: name}]
+            }
         }
 
         case UPDATE_FRIEND: {
