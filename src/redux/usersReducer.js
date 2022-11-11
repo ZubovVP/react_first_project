@@ -1,10 +1,12 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
+const SET_USERS = 'SET_USERS';
 
 const initialState = {
     users: [
         {
             id: 1,
+            photoUrl: 'https://avatars.mds.yandex.net/i?id=68711115ec04bdb23725428f970f8ece-4955473-images-thumbs&n=13',
             followed: false,
             fullName: 'Dmitry',
             status: 'I\'m a boss',
@@ -12,6 +14,7 @@ const initialState = {
         },
         {
             id: 2,
+            photoUrl: 'https://avatars.mds.yandex.net/i?id=68711115ec04bdb23725428f970f8ece-4955473-images-thumbs&n=13',
             followed: true,
             fullName: 'Vitaly',
             status: 'I\'m a too',
@@ -19,6 +22,7 @@ const initialState = {
         },
         {
             id: 3,
+            photoUrl: 'https://avatars.mds.yandex.net/i?id=68711115ec04bdb23725428f970f8ece-4955473-images-thumbs&n=13',
             followed: false,
             fullName: 'Andrew',
             status: 'I\'m a too',
@@ -56,12 +60,18 @@ const usersReducer = (state = initialState, action) => {
                 }
             };
 
+        case SET_USERS:
+            return {
+                ...state, users: [...state.users, ...action.users]
+            };
+
         default:
             return state;
     }
 }
 
 export const followAC = (userId) => ({type: FOLLOW, userId});
-export const unfolowAC = (userId) => ({type: UNFOLOW, userId});
+export const unfollowAC = (userId) => ({type: UNFOLLOW, userId});
+export const setUsersAC = (users) => ({type: SET_USERS, users});
 
 export default usersReducer;
