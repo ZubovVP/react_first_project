@@ -1,44 +1,21 @@
 import React from 'react';
 import styles from './Users.module.css'
+import axios from "axios";
+import userPhoto from '../../../src/asserts/images/user.webp'
 
 let Users = (props) => {
-    debugger;
     if (props.users.length === 0) {
-        props.setUsers(
-            [
-                {
-                    id: 1,
-                    photoUrl: 'https://avatars.mds.yandex.net/i?id=68711115ec04bdb23725428f970f8ece-4955473-images-thumbs&n=13',
-                    followed: false,
-                    fullName: 'Dmitry',
-                    status: 'I\'m a boss',
-                    location: {city: 'Minsk', country: 'Belarus'}
-                },
-                {
-                    id: 2,
-                    photoUrl: 'https://avatars.mds.yandex.net/i?id=68711115ec04bdb23725428f970f8ece-4955473-images-thumbs&n=13',
-                    followed: true,
-                    fullName: 'Vitaly',
-                    status: 'I\'m a too',
-                    location: {city: 'Moscow', country: 'Russia'}
-                },
-                {
-                    id: 3,
-                    photoUrl: 'https://avatars.mds.yandex.net/i?id=68711115ec04bdb23725428f970f8ece-4955473-images-thumbs&n=13',
-                    followed: false,
-                    fullName: 'Andrew',
-                    status: 'I\'m a too',
-                    location: {city: 'Kiev', country: 'Ukraine'}
-                }
-            ]
-        );
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+            props.setUsers(response.data.items);
+        });
+
    }
     return <div>
         {
             props.users.map(u => <div key={u.id}>
                 <span>
                     <div>
-                        <img src={u.photoUrl} className={styles.usersPhoto}/>
+                        <img src={u.photos.small != null ? u.photos.small : userPhoto} className={styles.usersPhoto}/>
                     </div>
                     <div>
                         {u.followed ?
@@ -48,13 +25,13 @@ let Users = (props) => {
                 </span>
                 <span>
                     <span>
-                        <div>{u.fullName}</div>
+                        <div>{u.name}</div>
                         <div>{u.status}</div>
                     </span>
 
                     <span>
-                        <div>{u.location.counter}</div>
-                        <div>{u.location.city}</div>
+                        <div>{"u.location.counter"}</div>
+                        <div>{"u.location.city"}</div>
                     </span>
                 </span>
             </div>)
