@@ -4,40 +4,18 @@ const SET_USERS = 'SET_USERS';
 
 let initialState = {
     users:
-        [
-            // {
-            //     id: 1,
-            //     photoUrl: 'https://avatars.mds.yandex.net/i?id=68711115ec04bdb23725428f970f8ece-4955473-images-thumbs&n=13',
-            //     followed: false,
-            //     fullName: 'Dmitry',
-            //     status: 'I\'m a boss',
-            //     location: {city: 'Minsk', country: 'Belarus'}
-            // },
-            // {
-            //     id: 2,
-            //     photoUrl: 'https://avatars.mds.yandex.net/i?id=68711115ec04bdb23725428f970f8ece-4955473-images-thumbs&n=13',
-            //     followed: true,
-            //     fullName: 'Vitaly',
-            //     status: 'I\'m a too',
-            //     location: {city: 'Moscow', country: 'Russia'}
-            // },
-            // {
-            //     id: 3,
-            //     photoUrl: 'https://avatars.mds.yandex.net/i?id=68711115ec04bdb23725428f970f8ece-4955473-images-thumbs&n=13',
-            //     followed: false,
-            //     fullName: 'Andrew',
-            //     status: 'I\'m a too',
-            //     location: {city: 'Kiev', country: 'Ukraine'}
-            // }
-        ]
+        [],
+    pageSize: 5,
+    totalUsersCount: 20,
+    currentPage: 1
 };
 
 const usersReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map( u =>  {
+                users: state.users.map(u => {
                     if (u.id === action.userId) {
                         return {...u, followed: true}
                     }
@@ -47,7 +25,7 @@ const usersReducer = (state = initialState, action) => {
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map( u =>  {
+                users: state.users.map(u => {
                     if (u.id === action.userId) {
                         return {...u, followed: false}
                     }
@@ -55,7 +33,7 @@ const usersReducer = (state = initialState, action) => {
                 })
             }
         case SET_USERS: {
-            return { ...state, users: [ ...state.users, ...action.users ]}
+            return {...state, users: [...state.users, ...action.users]}
         }
         default:
             return state;
@@ -63,8 +41,8 @@ const usersReducer = (state = initialState, action) => {
 }
 
 
-export const followAC = (userId) => ({type: FOLLOW, userId })
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId })
-export const setUsersAC = (users) => ({type: SET_USERS, users })
+export const followAC = (userId) => ({type: FOLLOW, userId})
+export const unfollowAC = (userId) => ({type: UNFOLLOW, userId})
+export const setUsersAC = (users) => ({type: SET_USERS, users})
 
 export default usersReducer;
