@@ -10,7 +10,8 @@ import {
 } from "../../redux/usersReducer";
 import axios from 'axios';
 import Users from './Users';
-import { SpinnerDotted } from 'spinners-react';
+import {SpinnerDotted} from 'spinners-react';
+import Preloader from "../common/Preloader/Preloader";
 
 class UsersContainer extends React.Component {
 
@@ -34,7 +35,7 @@ class UsersContainer extends React.Component {
 
     render() {
         return <>
-            {this.props.isFetching ? <SpinnerDotted size={90} thickness={180} speed={100} color="#36ad47"/> : null}
+            {this.props.isFetching ? <Preloader/> : null}
             <Users totalUsersCount={this.props.totalUsersCount}
                    pageSize={this.props.pageSize}
                    currentPage={this.props.currentPage}
