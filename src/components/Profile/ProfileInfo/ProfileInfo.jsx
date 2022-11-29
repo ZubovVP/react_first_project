@@ -1,10 +1,11 @@
 import './ProfileInfo.module.css';
 import s from './ProfileInfo.module.css'
 import Preloader from "../../common/Preloader/Preloader";
+import React from "react";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
-        return <Preloader />
+        return <Preloader/>
     }
     return (
         <div>
@@ -14,6 +15,10 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.descriptionBlock}>
                 <img src={props.profile.photos.large}/>
+                <p>Полное имя: <span><b>{props.profile.fullName}</b></span></p>
+                <p>Обо мне: <span><b>{props.profile.aboutMe}</b></span></p>
+                <p>Ищу работу: <span><b>{props.profile.lookingForAJob ? 'Да' : 'НЕТ'}</b></span></p>
+                {props.profile.lookingForAJob ? <p>Пожелания по работе: <span><b>{props.profile.lookingForAJobDescription}</b></span></p> : ''}
                 ava + description
             </div>
         </div>

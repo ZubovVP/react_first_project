@@ -1,6 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const SET_USER_PROFILE = 'UPDATE-NEW-POST-SET_USER_PROFILE';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 const initialState = {
     posts: [
