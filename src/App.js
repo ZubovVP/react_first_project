@@ -1,7 +1,6 @@
 import './App.css';
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
-import Profile from "./components/Profile/Profile";
 import {
     BrowserRouter,
     Routes,
@@ -24,7 +23,7 @@ const App = () => {
                     <Routes>
                         <Route path="/dialogs/*"
                                element={<DialogsContainer />}/>
-                        <Route path="/profile/*" element={<ProfileContainer />}/>
+                        <Route path="/profile/:userId" element={<ProfileContainer />}/>
                         <Route path="/users" element={<UsersContainer />}/>
 
                         <Route path="/news" element={<News/>}/>
