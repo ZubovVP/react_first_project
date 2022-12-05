@@ -4,6 +4,7 @@ let initialState = {
     userId: null,
     email: null,
     login: null,
+    photo: null,
     isAuth: false
 };
 
