@@ -7,6 +7,10 @@
     width: 50px;
 }
 
+.small img {
+    width: 30px;
+}
+
 .loginBlock{
     float: right;
 }
