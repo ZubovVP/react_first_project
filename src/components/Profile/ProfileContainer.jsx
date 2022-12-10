@@ -8,6 +8,7 @@ import {
     useNavigate,
     useParams,
 } from "react-router-dom";
+import {profileAPI} from "../../api/api";
 
 // wrapper to use react router's v6 hooks in class component(to use HOC pattern, like in router v5)
 function withRouter(Component) {
@@ -34,10 +35,9 @@ class ProfileContainer extends React.Component {
         if (!userId) {
             userId = 2;
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-            .then(response => {
-                this.props.setUserProfile(response.data);
-            });
+        profileAPI.getProfile(userId).then(data => {
+            this.props.setUserProfile(data);
+        });
     }
 
 
