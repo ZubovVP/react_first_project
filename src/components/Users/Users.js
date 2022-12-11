@@ -4,6 +4,7 @@ import userPhoto from "../../asserts/images/user.webp";
 import {NavLink} from "react-router-dom";
 import axios from "axios";
 import {profileAPI} from "../../api/api";
+import {toggleIsFollowingProgress} from "../../redux/usersReducer";
 
 let Users = (props) => {
 
@@ -33,20 +34,24 @@ let Users = (props) => {
                     </div>
                     <div>
                         {u.followed ?
-                            <button onClick={() => {
+                            <button disabled={props.toggleIsFollowingProgress} onClick={() => {
+                                props.toggleIsFollowingProgress(true);
                                 profileAPI.unfollow(u.id)
                                     .then(data => {
-                                        if (data.resultCode == 0) {
+                                        if (data.resultCode === 0) {
                                             props.unfollow(u.id);
                                         }
+                                        props.toggleIsFollowingProgress(false);
                                     });
                             }}>Unfollow</button>
-                            : <button onClick={() => {
+                            : <button disabled={props.toggleIsFollowingProgress} onClick={() => {
+                                props.toggleIsFollowingProgress(true);
                                 profileAPI.follow(u.id)
                                     .then(data => {
-                                        if (data.resultCode == 0) {
+                                        if (data.resultCode === 0) {
                                             props.follow(u.id);
                                         }
+                                        props.toggleIsFollowingProgress(false);
                                     });
                             }}>Follow</button>}
                         </div>
