@@ -2,18 +2,14 @@ import React from 'react';
 import styles from "./Users.module.css";
 import userPhoto from "../../asserts/images/user.webp";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
 import {profileAPI} from "../../api/api";
-import {toggleIsFollowingProgress} from "../../redux/usersReducer";
 
 let Users = (props) => {
-
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-
     return <div>
         <div>
             {pages.map(p => {
@@ -34,24 +30,24 @@ let Users = (props) => {
                     </div>
                     <div>
                         {u.followed ?
-                            <button disabled={props.toggleIsFollowingProgress} onClick={() => {
-                                props.toggleIsFollowingProgress(true);
+                            <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                props.toggleIsFollowingProgress(true, u.id);
                                 profileAPI.unfollow(u.id)
                                     .then(data => {
                                         if (data.resultCode === 0) {
                                             props.unfollow(u.id);
                                         }
-                                        props.toggleIsFollowingProgress(false);
+                                        props.toggleIsFollowingProgress(false, u.id);
                                     });
                             }}>Unfollow</button>
-                            : <button disabled={props.toggleIsFollowingProgress} onClick={() => {
-                                props.toggleIsFollowingProgress(true);
+                            : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+                                props.toggleIsFollowingProgress(true, u.id);
                                 profileAPI.follow(u.id)
                                     .then(data => {
                                         if (data.resultCode === 0) {
                                             props.follow(u.id);
                                         }
-                                        props.toggleIsFollowingProgress(false);
+                                        props.toggleIsFollowingProgress(false, u.id);
                                     });
                             }}>Follow</button>}
                         </div>
